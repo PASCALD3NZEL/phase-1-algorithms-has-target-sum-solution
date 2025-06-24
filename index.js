@@ -32,3 +32,19 @@ if (require.main === module) {
 }
 
 module.exports = hasTargetSum;
+function hasTargetSum(array, target) {
+  const seenNumbers = new Set(); // create a Set to track numbers we've seen
+
+  for (const number of array) {
+    const complement = target - number;
+
+    if (seenNumbers.has(complement)) {
+      return true; // found two numbers that add up to the target
+    }
+
+    seenNumbers.add(number); // track current number for future lookups
+  }
+
+  return false; // no pair found that adds up to the target
+}
+
